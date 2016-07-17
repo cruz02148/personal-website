@@ -1,0 +1,5 @@
+# Build Files
+client/public
+
+# Node Modules
+node_modules/
