@@ -1,28 +1,29 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const BUILD_DIR = path.resolve(__dirname, 'client/public');
-const APP_DIR = path.resolve(__dirname, 'client/src');
-
-const config = {
-  entry: APP_DIR + '/index.js',
+module.exports = {
+  devtool: 'inline-source-map',
+  entry: ['webpack-hot-middleware/client', './client/index.js'],
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js'
+    path: path.resolve('./dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
   },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  ],
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        include: APP_DIR,
-        loaders: ['babel?cacheDirectory'],
-        loader: 'babel'
-      }
-    ]
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react', 'es2015', 'stage-1', 'react-hmre'],
+        },
+      },
+    ],
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  }
 };
-
-module.exports = config;
