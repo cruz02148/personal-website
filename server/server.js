@@ -13,6 +13,8 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output
 app.use(webpackHotMiddleware(compiler));
 
 app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname, '../client/public')));
+app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')));
 
 app.use('/', (req, res) => {
   res.sendFile(path.resolve('client/index.html'));
