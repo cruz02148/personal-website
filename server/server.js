@@ -12,13 +12,29 @@ const app = express();
 // app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 // app.use(webpackHotMiddleware(compiler));
 
-app.use(express.static('./dist')); // This may not be doing anything currently @ 7/24/16
+app.use(express.static('../dist/views')); // This may not be doing anything currently @ 7/24/16
 app.use(express.static(path.join(__dirname, '../client/public')));
-app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
-app.use('/', (req, res) => {
-  res.sendFile(path.resolve('dist/views/index.html'));
+// Routes
+app.get('/', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/index.html`));
+});
+
+app.get('/portfolio', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/portfolio.html`));
+});
+
+app.get('/resume', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/resume.html`));
+});
+
+app.get('/blog', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/blog.html`));
+});
+
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/contact.html`));
 });
 
 const port = 3030;
