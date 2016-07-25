@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="icon" href="/dist/assets/img/js-favicon.png">
+
+    <title>Mike's Website</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/dist/css/styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top nav-custom">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Michael Cruz</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/resume">Resume</a></li>
+            <li class="active"><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h3 class="text-info">Higher Order Functions for Beginners</h3>
+            <em><h5>April 27, 2016</h5></em>
+            <br>
+            <p>
+            At first the concept of higher order functions can be quite intimidating for a JavaScript beginner.<br>
+            Maybe you have just finished up the JavaScript track on Codecademy or have taken a few lessons on <br>
+            Code School. While I am all for looking at those sites to get a gentle introduction to JavaScript and its syntax,<br>
+            those sites typical won’t cover some much of the advanced functions real developers use each and everyday. Today I<br>
+            will be exploring how higher order functions work and why you should be using them.
+            </p>
+            <br>
+            <h4 class="text-primary">WHAT IS A HIGHER ORDER FUNCTION</h4>
+            <p>
+            In the most simplest terms, a higher order function is a function that takes in another function as an argument.<br>
+            You may also see the term “callback” and both callback and higher order functions are the same thing. You can say<br>
+            that a higher order function takes in a callback as an argument to it.
+            <br>
+            <br>
+            I will use the common forEach and reduce to solve a simple problem. I want to take an array of integers and sum all<br>
+            the numbers in the array and return the sum. Before I go straight into the two higher order functions I will first<br>
+            use the common “for loop” to solve the exact same problem. If you have any sort of experience with JavaScript you<br>
+            will be able to fully understand how the for loop works.
+            <br>
+            <blockquote class="well">
+              <p>
+              var arr = [1,5,10,25,100,50];<br>
+              
+              var sum = 0;<br>
+              
+              for (var i=0; i < arr.length; i++) {<br>
+              
+              sum += arr[i];<br>
+              
+              }<br>
+              <br>
+              <em>// sum = 191</em>
+              </p>
+            </blockquote>
+            Just to recap here, the for loop will go through each number in the array and add that value to the sum variable.<br>
+            Below is how this exact same problem can be solved using the higher order function “forEach”.
+            <br>
+            <h4 class="text-primary">FOREACH AND REDUCE</h4>
+            <blockquote class="well">
+              <p>
+                var arr = [1,5,10,25,100,50];<br>
+                var sum = 0;<br>
+
+                arr.forEach(function (num) {<br>
+                  sum += num;<br>
+                });<br>
+                <br>
+                <em>// sum = 191</em>
+              </p>
+            </blockquote>
+            Let’s take a look at the code snippet above and walk through how this function works. At the beginning we define<br>
+            our array and set our sum equal to zero. We call “forEach” on “arr” and we pass in an anonymous function with<br>
+            a “num” parameter. The key understanding here is that “num” represents each item in “arr”. In fact, in any<br>
+            invocation of forEach, the parameter passed in the anonymous function will represent each individual item in the<br>
+            array. Then, inside our anonymous function we perform our sum on each item.
+            <br>
+            <br>
+            <blockquote class="well">
+              <p>
+                var arr = [1,5,10,25,100,50];<br>
+
+                arr.reduce(function (num1, num2){<br>
+                  return num1 + num2;<br>
+                },0);<br>
+                <br>
+                <em>// sum = 191</em>
+              </p>
+            </blockquote>
+            Looking at the code snippet above we can how can perform the exact same operation using the reduce method<br>
+            on arrays. You’ll notice a few differences from the forEach example above. First, we see that we do not declare<br>
+            a sum variable. Instead, we pass in the value of 0 as the second argument to reduce. This second argument is<br>
+            commonly referred to as the “accumulator”, which we can also think of as the “start” of the function. Second,<br>
+            once we call reduce, we also pass in another anonymous function with two parameters. The first of these<br>
+            parameters is the accumulator and the second represents each individual item in the array. So if we walk through<br>
+            this example we see that accumulator was set to “0” which is also “num1” the first time through the array.<br>
+            “Num2” is then the value “1” at the first position in the array. The function will add both 0 and 1 and return 1.<br>
+            So now, 1 is passed in as “num1” the second time through so now we add “5” and this iteration will now return 6.<br>
+            You can see where this pattern is heading…
+            </p>
+            <br>
+            <h4 class="text-primary">ONE MORE (SLIGHTLY ADVANCED) EXAMPLE</h4>
+            <p>
+            Let’s define a function “contains” that will check and array to see if a specified value is contained within the<br>
+            array and return true if it does. First we will look at how to do this with forEach:
+            <br>
+            <blockquote class="well">
+              <p>
+                var arr = ["cat", "dog", 1,2,50, "friend"];<br>
+
+                var contains = function (collection, target) {<br>
+                  var result = false;<br>
+
+                  collection.forEach(function (item){<br>
+                    if (item === target) {<br>
+                      result = true;<br>
+                    }<br>
+                  });<br>
+
+                  return result;<br>
+                };<br>
+                <br>
+                contains(arr, "dog");<br>
+                <em>// returns true</em><br>
+                contains(arr, "11');<br>
+                <em>// returns false</em><br>
+              </p>
+            </blockquote>
+            Contains is not a native method in JavaScript so I had to implement the function for it to work. Contains is<br>
+            actually a method found in other libraries like <a class="text-info" href="http://underscorejs.org/">Underscore</a>. Looking at the inner function inside<br>
+            of contains we see that we have invoked our forEach function once again. We call forEach on the input<br>
+            collection (“arr” in this case) and we then loop through the entire collection to check to see if the current<br>
+            “item” matches our target. If it does, then we set the result equal to true and we will return that. Again the<br>
+            key to remember is that the “item” inside of forEach represents each item/value in the collection array just<br>
+            like our sum example above. Let’s take a look at how this could be solved using reduce:
+            <br>
+            <br>
+            <blockquote class="well">
+              <p>
+                var arr = ["cat", "dog", 1,2,50, "friend"];<br>
+
+                var contains = function (collection, target) {<br>
+                  return collection.reduce(function (wasFound, item) {<br>
+                    if (wasFound) {<br>
+                      return true<br>
+                    }<br>
+                    return item === target<br>
+                  }, false);<br>
+                };<br>
+
+                contains(arr, 50)<br>
+                <em>// returns true</em><br>
+                contains(arr, "hero")<br>
+                <em>// returns false</em><br>
+              </p>
+            </blockquote>
+            Let’s take a look at how this implementation for contains works. We again set our skeleton the same with the<br>
+            collection and target parameters. We then call reduce on our collection and pass in two parameters to its<br>
+            anonymous function named “wasFound” and “item”. Again, “wasFound” represents the “accumulator” or “start”<br>
+            and the “item” represents each item in the collection array. Remember, reduce also accepts a starting<br>
+            accumulator value so we can pass in “false”  as the starting value. As reduce gets invoked, the first time<br>
+            around we notice that “wasFound” is equal to “false” since that is the value we first passed in. Our if<br>
+            statement basically checks if the “wasFound” parameter has been set to true. The first time around the if<br>
+            statement doesn’t run since wasFound is false and we then check the current item against the target parameter<br>
+            and if there is a match, then “wasFound” gets set to “true.”
+            </p>
+            <h4 class="text-primary">IN CONCLUSION</h4>
+            <p>
+            Don’t be intimidated by the concept of higher order functions and callbacks. Once you get the hang of it<br>
+            and start practicing them they become second nature to you. You will see these types of functions everywhere<br>
+            including the very popular library jQuery. Read up on them and start using them in your code today!
+            </p>
+            <br>
+          </div>
+          <div class="col-md-4">
+            <h3>Recent Posts</h3>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="/greenfield">Greenfield Review</a></li>
+              <li class="list-group-item"><a href="/mvp">MVP Project</a></li>
+              <li class="list-group-item"><a href="/how-to">How to Deploy a Website</a></li>
+              <li class="list-group-item"><a href="/higher">Higher Order Functions</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /.container -->      
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row-fluid">
+          <div class="col-md-6">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/resume">Resume</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <p>Copyright 2016 &copy; , All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/dist/js/scripts.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </body>
+</html>

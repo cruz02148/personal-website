@@ -37,6 +37,22 @@ app.get('/contact', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../dist/views/contact.html`));
 });
 
+app.get('/greenfield', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/greenfield.html`));
+});
+
+app.get('/mvp', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/mvp.html`));
+});
+
+app.get('/how-to', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/how-website.html`));
+});
+
+app.get('/higher', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/higher.html`));
+});
+
 const port = 3030;
 
 app.listen(port, err => {
