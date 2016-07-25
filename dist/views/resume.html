@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-   <!--  <link rel="icon" href="../../favicon.ico"> -->
-
+    <link rel="icon" href="/dist/assets/img/js-favicon.png">
+    
     <title>Mike's Website</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/dist/css/styles.css">
+    <link rel="stylesheet" href="/dist/fonts/font-awesome/css/font-awesome.min.css">
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top nav-custom">
@@ -35,19 +36,21 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <section>
+    <section id="resume">
       <div class="container">
         <div class="well">
           <div class="row">
             <div class="col-md-12 text-center">
                 <img class="profile-pic" src="/dist/assets/img/profilePic.jpg" alt="Profile Picture">
-                <h1>Michael Cruz</h1>
-                <p class="lead profile-subtext">Full-Stack Web Developer</p>            
+                <h1 class="profile-name">Michael Cruz</h1>
+                <p class="lead profile-subtext">Full-Stack Web Developer</p>
+                <p><a href="https://www.linkedin.com/in/michaelgcruz"><i class="fa fa-linkedin"></i>&nbsp; linkedin.com/in/michaelgcruz</a> | <a href="https://github.com/cruz02148"><i class="fa fa-github"></i>&nbsp; github.com/cruz02148</a></p>         
             </div>
           </div>
+          <hr>
           <div class="row">
-            <div class="col-md-8">
-              <h1>Summary</h1>
+            <div class="col-md-12 text-center">
+              <h2>Summary</h2>
               <p>I am a full-stack software engineer with a strong background in JavaScript.<br>
                 I particularly enjoy working on the front-end and using the latest technologies<br>
                 and techniques. When looking to build out a feature or fix a bug, I first look at<br>
@@ -58,19 +61,11 @@
                 fixing the smallest bug, I approach everything with 100% commitment and effort and can<br>
                 be expected to get the job done.</p>
             </div>
-            <div class="col-md-4">
-              <h1>Contact Info</h1>
-              <ul>
-                <li><a href="mailto:cruz02148@gmailcom">cruz02148@gmail.com</a></li>
-                <li><a href="https://www.linkedin.com/in/michaelgcruz">linkedin.com/in/michaelgcruz</a></li>
-                <li><a href="https://github.com/cruz02148">github.com/cruz02148</a></li>
-              </ul>
-            </div>
           </div>
           <hr class="line-break">
           <div class="row">
             <div class="col-md-8">
-              <h1>Recent Projects</h1>
+              <h2>Recent Projects</h2>
               <h3>Sparkq | Full-Stack Engineer</h3>
               <p>Web app where couples go to gauge their relationship and offers suggestions for improvement</p>
               <ul>
@@ -105,7 +100,7 @@
               </ul>
             </div>
             <div class="col-md-4">
-              <h1>Skills</h1>
+              <h2>Skills</h2>
               <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-info skills-text" style="width: 100%">JavaScript</div>
               </div>
@@ -113,10 +108,19 @@
                 <div class="progress-bar progress-bar-info skills-text" style="width: 100%">React & Redux</div>
               </div>
               <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-info skills-text" style="width: 95%">ES6 & Babel</div>
+              </div>
+              <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-info skills-text" style="width: 95%">HTML5 & CSS3</div>
               </div>
               <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-info skills-text" style="width: 90%">Git</div>
+              </div>
+              <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-info skills-text" style="width: 90%">Restful APIs</div>
+              </div>
+              <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-info skills-text" style="width: 90%">Bootstrap & Material Design</div>
               </div>
               <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-info skills-text" style="width: 90%">Node & Express</div>
@@ -131,14 +135,20 @@
                 <div class="progress-bar progress-bar-info skills-text" style="width: 65%">Angular</div>
               </div>
               <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-info skills-text" style="width: 65%">Heroku & AWS</div>
+              </div>
+              <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-info skills-text" style="width: 60%">jQuery</div>
+              </div>
+              <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-info skills-text" style="width: 60%">TDD with Mocha/Chai</div>
               </div>
             </div>
           </div>
           <hr>
           <div class="row">
             <div class="col-md-8">
-              <h1>Experience</h1>
+              <h2>Experience</h2>
               <h3>LTI Worldwide Limousine</h3>
               <div class="media-body">
                 <h5 class="media-heading">VP Strategy & Development | <span class="text-right">2012 - 2016</span></h5>
@@ -170,7 +180,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <h1>Education</h1>
+              <h2>Education</h2>
                 <div class="row row-spacing">
                   <div class="col-md-12">
                     <div class="media-body">

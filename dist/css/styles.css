@@ -23,6 +23,7 @@ footer ul li {
   list-style: none;
   padding: 0 10px 0 10px;
   float: left;
+  font-size: 16px;
 }
 
 a {
@@ -32,10 +33,23 @@ a {
 footer p {
   float: right;
   color: #ebebeb;
+  font-size: 16px;
+}
+
+p a {
+  font-size: 18px;
 }
 
 .nav-custom {
   padding: 10px 0 8px 0;
+}
+
+#navbar li {
+  font-size: 16px;
+}
+
+.navbar-brand {
+  font-size: 32px;
 }
 
 img {
@@ -55,7 +69,11 @@ img {
 
 .profile-subtext {
   text-transform: uppercase;
-  font-size: 1.1em;
+  font-size: 1.3em;
+}
+
+.profile-name {
+  font-size: 40px;
 }
 
 .skills-text {
@@ -70,4 +88,9 @@ img {
 
 .row-spacing {
   margin-bottom: 10px;
+}
+
+#resume li {
+  list-style: none;
+  padding: 5px 0 5px 0;
 }

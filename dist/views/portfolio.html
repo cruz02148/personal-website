@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-   <!--  <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="/dist/assets/img/js-favicon.png">
 
     <title>Mike's Website</title>
 
@@ -35,16 +35,56 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    
     <section>
       <div class="container">
-        <div class="starter-template">
-          <h1>Portfolio</h1>
-          <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1>Portfolio</h1>
+            <p>Below are some images from my work on my apps that I have built and deployed.</p>
+            <p>Click on any image below to visit the deployed website in your browser</p>
+            <hr>
+          </div>
         </div>
-
-      </div><!-- /.container -->      
+        <div class="row">
+          <div class="col-md-12">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <a href="http://sparkq.us/" target="_blank"><img class="first-slide" src="/dist/assets/img/sparkq-cal.png" alt="Sparkq Calendar"></a>
+              </div>
+              <div class="item">
+                <a href="http://sparkq.us/" target="_blank"><img class="second-slide" src="/dist/assets/img/sparkq-quiz.png" alt="Sparkq Quiz"></a>
+              </div>
+              <div class="item">
+                <a href="https://barter-box.herokuapp.com" target="_blank"><img class="third-slide" src="/dist/assets/img/barter-main.png" alt="Barter Box Main"></a>
+              </div>
+              <div class="item">
+                <a href="https://pocket-trainer.herokuapp.com/" target="_blank"><img class="fourth-slide" src="/dist/assets/img/pocket-workout.png" alt="Pocket Trainer Workout"></a>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+            </div><!-- /.carousel -->
+          </div>
+        </div>
+      </div>
     </section>
-    <footer>
+    
+    <footer class="navbar navbar-fixed-bottom">
       <div class="container">
         <div class="row-fluid">
           <div class="col-md-6">
