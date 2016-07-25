@@ -40,6 +40,15 @@ p a {
   font-size: 18px;
 }
 
+.footer-nav {
+  left: -4%;
+  padding: 0;
+}
+
+.footer-copy {
+  padding: 0;
+}
+
 .nav-custom {
   padding: 10px 0 8px 0;
 }
@@ -57,23 +66,20 @@ img {
   height: 800px;
 }
 
-.profile-header {
-  margin: 0 auto;
-}
-
 .profile-pic {
   height: 10%;
   width: 10%;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .profile-subtext {
   text-transform: uppercase;
-  font-size: 1.3em;
+  font-size: 1.1em;
+  margin-top: -20px;
 }
 
 .profile-name {
-  font-size: 40px;
+  font-size: 48px;
 }
 
 .skills-text {
@@ -82,8 +88,13 @@ img {
 }
 
 .line-break {
-  color: black;
-  font-weight: 800;
+  border-width: 1px;
+  border-color: #df691a;
+  width: 90%;
+}
+
+.subheading {
+  font-weight: 300;
 }
 
 .row-spacing {
@@ -121,4 +132,90 @@ img {
 .main-abilities {
   margin: 48px 0 22px 0;
   padding: 15px 0 10px 0;
+}
+
+/* MEDIA QUERIES */
+
+@media(max-width: 568px) {
+  footer {
+    padding: 0;
+  }
+  footer p {
+    float: none;
+    text-align: center;
+    padding: 0;
+  }
+  
+  footer ul li {
+    padding: 0;
+  }
+  
+  .profile-pic {
+    height: 25%;
+    width: 25%;
+  }
+}
+
+@media(max-width: 768px) {
+  footer p {
+    float: none;
+    text-align: center;
+  }
+  footer ul {
+    display: none;
+  }
+  footer ul li {
+    padding: 5px;
+    float: left;
+  }
+}
+
+@media(max-width: 767px) {
+  .caption {
+    position: absolute;
+    top: 1%;
+    left: 0;
+    width: 100%;
+  }
+
+  .home-name {
+    font-size: 2.5em;
+  }
+
+  .home-subname {
+    font-size: 1.2em;
+  }
+  .main-abilities {
+    margin: 22px 0 16px 0;
+    padding: 15px 0 10px 0;
+  }
+  .abilities-main-text {
+    font-size: 2em;
+  }
+  .abilities-sub-text {
+    font-size: 1.2em;
+  }
+}
+
+@media(min-width: 1024px) and (max-width: 1440px) {
+  section {
+    margin-bottom: 36px;
+  }
+  .carousel-slide {
+    margin-bottom: 36px;
+  }
+  
+  .portfolio-footer .navbar-fixed-bottom {
+    position: relative;
+  }
+}
+
+@media(min-width: 1920px) {
+  .blog-footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:60px;
+    width:100%;
+  }
 }
