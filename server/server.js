@@ -53,8 +53,8 @@ app.get('/higher', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../dist/views/higher.html`));
 });
 
-const port = process.env.PORT || 3030;
-// const port = 3030;
+// const port = process.env.PORT || 3030;
+const port = 3030;
 
 app.listen(port, err => {
   if (err) {

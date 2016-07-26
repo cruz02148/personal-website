@@ -101,6 +101,10 @@ img {
   margin-bottom: 10px;
 }
 
+#resume .well {
+  margin-top: 42px;
+}
+
 #resume li {
   list-style: none;
   padding: 5px 0 5px 0;
@@ -157,20 +161,28 @@ img {
 }
 
 @media(max-width: 768px) {
-  footer p {
-    float: none;
-    text-align: center;
-  }
-  footer ul {
-    display: none;
-  }
-  footer ul li {
-    padding: 5px;
-    float: left;
+  footer {
+    padding: 0;
   }
 }
 
 @media(max-width: 767px) {
+  footer p {
+    float: none;
+    text-align: center;
+    font-weight: 300;
+    padding-top: 5px;
+  }
+  
+  footer ul li {
+    padding: 5px 25px 5px 25px;
+    text-align: center;
+  }
+  
+  .footer-nav {
+    left: 1%;
+  }
+  
   .caption {
     position: absolute;
     top: 1%;
