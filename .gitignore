@@ -3,3 +3,6 @@ client/public
 
 # Node Modules
 node_modules/
+
+#App Secrets
+config.js

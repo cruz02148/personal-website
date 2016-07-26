@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+const emailAccount = require('../config');
 // const webpack = require('webpack');
 // const config = require('../webpack.config.js');
 // const webpackDevMiddleware = require('webpack-dev-middleware');
 // const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
-
+app.use(bodyParser.urlencoded({ extended: true }));
 // const compiler = webpack(config);
 
 // app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
@@ -37,6 +40,30 @@ app.get('/contact', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../dist/views/contact.html`));
 });
 
+app.post('/contact-data', (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: emailAccount.username,
+      pass: emailAccount.password,
+    },
+  });
+  const mailOptions = {
+    from: 'cruz02148@gmail.com',
+    to: 'cruz02148@gmail.com',
+    subject: 'Contact Form Submission',
+    text: `Message received from ${req.body.name} with and email of ${req.body.email}. 
+    The message reads: ${req.body.message}`,
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Message Sent!');
+    }
+  });
+});
+
 app.get('/greenfield', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../dist/views/greenfield.html`));
 });
@@ -53,8 +80,8 @@ app.get('/higher', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../dist/views/higher.html`));
 });
 
-// const port = process.env.PORT || 3030;
-const port = 3030;
+const port = process.env.PORT || 3030;
+// const port = 3030;
 
 app.listen(port, err => {
   if (err) {
