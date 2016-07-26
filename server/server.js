@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const emailAccount = require('../config');
 // const webpack = require('webpack');
 // const config = require('../webpack.config.js');
 // const webpackDevMiddleware = require('webpack-dev-middleware');
