@@ -40,17 +40,15 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact-data', (req, res) => {
-    console.log(process.env.GMAIL_EMAIL);
-    console.log(typeof process.env.GMAIL_EMAIL);
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: process.env.GMAIL_EMAIL,
-      pass: process.env.GMAIL_PASS,
+      user: 'michael02148@gmail.com',
+      pass: 'Fuzzball1',
     },
   });
   const mailOptions = {
-    from: 'cruz02148@gmail.com',
+    from: 'michael02148@gmail.com',
     to: 'cruz02148@gmail.com',
     subject: 'Contact Form Submission',
     text: `Message received from ${req.body.name} with and email of ${req.body.email}. 
