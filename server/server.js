@@ -44,8 +44,8 @@ app.post('/contact-data', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: emailAccount.username,
-      pass: emailAccount.password,
+      user: process.env.GMAIL_EMAIL,
+      pass: process.env.GMAIL_PASS,
     },
   });
   const mailOptions = {
