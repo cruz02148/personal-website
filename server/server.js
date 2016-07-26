@@ -40,9 +40,9 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact-data', (req, res) => {
-  const transporter = nodemailer.createTransport({
     console.log(process.env.GMAIL_EMAIL);
     console.log(typeof process.env.GMAIL_EMAIL);
+  const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
       user: process.env.GMAIL_EMAIL,
