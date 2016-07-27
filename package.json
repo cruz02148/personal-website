@@ -52,8 +52,6 @@
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
-    "nodemailer": "^2.5.0",
-    "postmark": "^1.2.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "sendgrid": "^3.0.11"
