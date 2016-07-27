@@ -1,7 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
+const config = require('../config');
+const sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY);
+const helper = require('sendgrid').mail;
+// const nodemailer = require('nodemailer');
 // const webpack = require('webpack');
 // const config = require('../webpack.config.js');
 // const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -40,26 +44,23 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact-data', (req, res) => {
-  const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-      user: 'michael02148@gmail.com',
-      pass: 'Fuzzball1',
-    },
-  });
-  const mailOptions = {
-    from: 'michael02148@gmail.com',
-    to: 'cruz02148@gmail.com',
-    subject: 'Contact Form Submission',
-    text: `Message received from ${req.body.name} with and email of ${req.body.email}. 
-    The message reads: ${req.body.message}`,
-  };
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Message Sent!');
-    }
+  const from_email = new helper.Email(process.env.SENDGRID_USERNAME);
+  const to_email = new helper.Email(process.env.TO_EMAIL);
+  const subject = 'Contact Form Submission';
+  const content = new helper.Content(
+    'text/plain',
+    `Message received from ${req.body.name} with and email of ${req.body.email}. 
+    The message reads: ${req.body.message}`);
+  const mail = new helper.Mail(from_email, subject, to_email, content);
+  const requestBody = mail.toJSON();
+  const request = sg.emptyRequest();
+  request.method = 'POST';
+  request.path = '/v3/mail/send';
+  request.body = requestBody;
+  sg.API(request, response => {
+    console.log(response.statusCode);
+    console.log(response.body);
+    console.log(response.headers);
   });
 });
 
