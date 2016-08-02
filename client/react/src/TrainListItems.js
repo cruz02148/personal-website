@@ -34,7 +34,7 @@ export default class TrainListItems extends Component {
       return (
         <tr key={train.Trip}>
           <td>MBTA</td>
-          <td>{moment.unix(train.ScheduledTime).format('H:mm A')}</td>
+          <td>{moment.unix(train.ScheduledTime).format('h:mm A')}</td>
           <td>{train.Destination}</td>
           <td>{train.Trip}</td>
           <td>{train.Track ? train.Track : "TBD"}</td>
