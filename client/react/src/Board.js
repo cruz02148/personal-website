@@ -7,25 +7,32 @@ export default class Board extends Component {
   constructor(props) {
     super(props);
     this.getSchedule = this.getSchedule.bind(this);
+    this.getTime = this.getTime.bind(this);
     this.state = {
-      schedule: []
+      schedule: [],
+      date: '',
     };
   }
   
   componentWillMount() {
-    // Will fetch the schedule and then again every 10 minutes
+    // Will fetch the schedule/time and then again every 10 minutes/1 minute
     this.getSchedule();
-    this.timer = setInterval(() => {
+    this.getTime();
+    this.boardTimer = setInterval(() => {
       this.getSchedule();
     }, 600000);
+    this.timer = setInterval(() => {
+      this.getTime();
+    }, 60000)
   }
   
   componentWillUnmount() {
+    clearInterval(this.boardTimer);
     clearInterval(this.timer);
   }
   
   getSchedule() {
-    axios.get('http://localhost:3030/mbta-data')
+    axios.get('http://www.michaelgcruz.com/mbta-data')
     .then(response => {
       this.setState({
         schedule: response.data
@@ -36,12 +43,17 @@ export default class Board extends Component {
     })
   }
   
+  getTime() {
+    const newDate = new Date();
+    this.setState({
+      date: newDate,
+    })
+  }
   render() {
-    const todaysDate = new Date();
-    const currentDay = moment(todaysDate).format('dddd');
-    const currentDate = moment(todaysDate).format('M-D-YYYY')
-    const currentTime = moment(todaysDate).format('h:mm A')
-    
+    const currentDay = moment(this.state.date).format('dddd');
+    const currentDate = moment(this.state.date).format('M-D-YYYY');
+    let currentTime = moment(this.state.date).format('h:mm A');
+        
     return(
       <div className="table-responsive">
         <table className="table">
@@ -53,7 +65,7 @@ export default class Board extends Component {
             </tr>
             <tr className="table-info">
               <th className="table-date">{currentDate}</th>
-              <th colspan="5" className="table-time">{currentTime}</th>
+              <th colSpan="5" className="table-time">{currentTime}</th>
             </tr>
             <tr>
               <th>Carrier</th>
