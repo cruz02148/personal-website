@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack -p",
-    "start": "nodemon server/server.js --ignore client/components"
+    "start": "nodemon server/server.js --ignore client/components",
+    "prac": "client/react"
   },
   "repository": {
     "type": "git",

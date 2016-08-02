@@ -20,9 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 // app.use(webpackHotMiddleware(compiler));
 
-app.use(express.static('../dist/views')); // This may not be doing anything currently @ 7/24/16
+// app.use(express.static('../dist/views')); // This may not be doing anything currently @ 7/24/16
 app.use(express.static(path.join(__dirname, '../client/public')));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
+app.use('/client', express.static(path.join(__dirname, '../client')))
 
 // Routes
 app.get('/', (req, res) => {

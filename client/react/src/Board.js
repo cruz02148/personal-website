@@ -16,13 +16,11 @@ export default class Board extends Component {
     // Will fetch the schedule and then again every 10 minutes
     this.getSchedule();
     this.timer = setInterval(() => {
-      console.log('hey')
       this.getSchedule();
     }, 600000);
   }
   
   componentWillUnmount() {
-    console.log('byeee')
     clearInterval(this.timer);
   }
   
@@ -43,9 +41,6 @@ export default class Board extends Component {
     const currentDay = moment(todaysDate).format('dddd');
     const currentDate = moment(todaysDate).format('M-D-YYYY')
     const currentTime = moment(todaysDate).format('h:mm A')
-    console.log(currentTime);
-    console.log(currentDate);
-    console.log(currentDay);
     
     return(
       <div className="table-responsive">
@@ -53,12 +48,12 @@ export default class Board extends Component {
           <thead>
             <tr className="table-info">
               <th>{currentDay}</th>
-              <th colSpan="4">North Station Train Info</th>
+              <th className="station-name" rowSpan="2" colSpan="4">North Station Train Info</th>
               <th>Current Time</th>
             </tr>
-            <tr>
-              <th>{currentDate}</th>
-              <th>{currentTime}</th>
+            <tr className="table-info">
+              <th className="table-date">{currentDate}</th>
+              <th colspan="5" className="table-time">{currentTime}</th>
             </tr>
             <tr>
               <th>Carrier</th>
