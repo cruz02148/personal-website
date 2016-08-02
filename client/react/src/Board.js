@@ -60,7 +60,7 @@ export default class Board extends Component {
           <thead>
             <tr className="table-info">
               <th>{currentDay}</th>
-              <th className="station-name" rowSpan="2" colSpan="4">North Station Train Info</th>
+              <th className="station-name" rowSpan="2" colSpan="4">North Station Train Board</th>
               <th>Current Time</th>
             </tr>
             <tr className="table-info">
