@@ -4,12 +4,16 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY);
 const helper = require('sendgrid').mail;
+const axios = require('axios');
+const cors = require('cors');
+const Converter = require('csvtojson').Converter;
 // const webpack = require('webpack');
 // const config = require('../webpack.config.js');
 // const webpackDevMiddleware = require('webpack-dev-middleware');
 // const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 // const compiler = webpack(config);
 
@@ -76,6 +80,27 @@ app.get('/how-to', (req, res) => {
 
 app.get('/higher', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../dist/views/higher.html`));
+});
+
+app.get('/mbta', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../dist/views/mbta.html`));
+});
+
+app.get('/mbta-data', (req, res) => {
+  const converter = new Converter({});
+  axios.get('http://developer.mbta.com/lib/gtrtfs/Departures.csv')
+  .then(response => {
+    converter.fromString(response.data, (err, result) =>{
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
 });
 
 const port = process.env.PORT || 3030;
